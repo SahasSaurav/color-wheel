@@ -56,19 +56,16 @@ rotateButton.addEventListener('click',function(e){
   e.preventDefault();
 });
 
-triangleButton.addEventListener('click',function(e){
-  console.log(e.clientX+"\t"+e.clientY)
-  e.preventDefault();
-});
-
 function drawColorWheel(ctx,color,startAngle,endAngle){
+  ctx.moveTo(window.innerWidth/2,window.innerHeight/2);
   ctx.beginPath();
   ctx.fillStyle=color;
-  ctx.moveTo(window.innerWidth/2,window.innerHeight/2);
+  ctx.strokeStyle=color;
   ctx.lineTo(window.innerWidth/2,50)
   ctx.moveTo(window.innerWidth/2,window.innerHeight/2);
   ctx.arc(window.innerWidth/2,window.innerHeight/2,200,startAngle,endAngle);
   ctx.closePath();
+  ctx.stroke();
   ctx.fill();
 }
 
@@ -144,6 +141,3 @@ function changeBackgroundColor(angle){
   document.querySelector('body').style.transitionDuration='2.5s';
   document.querySelector('body').style.background=color;
 }
-
-//clear the console window in 5 min
-setInterval(function(){console.clear()},60000);
